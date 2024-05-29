@@ -1,0 +1,14 @@
+mixin sort(sortObj)
+    div(sort)
+        select(
+            name="sort"
+            sort-select 
+            class="form-control"
+        ) 
+            each item in sortObj
+                option(value=item.value) #{item.name}
+            
+        button(
+            class="btn ms-2"
+            sort-clear 
+        ) Clear 

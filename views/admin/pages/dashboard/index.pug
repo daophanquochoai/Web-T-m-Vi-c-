@@ -1,0 +1,37 @@
+extends ../../layouts/default.pug 
+
+block main 
+    .row.mt-4
+        .col-12
+            .card.mb-4
+                .card-header Thông tin công ty
+                .card-body
+                    if(company.logo)
+                        img(
+                            src=company.logo
+                            style="height: 100px;margin-bottom: 15px;"
+                        )
+                    if(company.tenCT)
+                        p Tên công ty : <b>#{company.tenCT}</b>
+                    if(company.emailCT)
+                        p Email: <b>#{company.emailCT}</b>
+                    if(company.sdtCT)
+                        p Số điện thoại: <b>#{company.sdtCT}</b> 
+                    if(company.quyMo)
+                        p Số nhân viên: <b>#{company.quyMo}</b>
+                            
+    .row
+        .col-6
+            .card.mb-4
+                .card-header Job 
+                .card-body
+                    p Số lượng: <b>#{soluongJob.soluong}</b>
+                    p Đang tuyển: <b>#{soLuongDangTuyen.soluong}</b>
+                    p Dừng tuyển: <b>#{soLuongDungTuyen.soluong}</b>
+        .col-6
+            .card.mb-4
+                .card-header CV
+                .card-body
+                    p Số lượng: <b>#{soLuongCV.soluong}</b>
+                    p Đã xem: <b>#{soLuongCVDaXem.soluong}</b>
+                    p Chưa xem: <b>#{soLuongCVChuaXem.soluong}</b>

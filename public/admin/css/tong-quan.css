@@ -1,0 +1,53 @@
+.header{
+    position: sticky;
+    background: #262626;
+    top: 0;
+    padding: 15px 0px;
+    z-index: 999;
+}
+
+.header .inner-logo a{
+    color: #fff;
+    font-weight: 800;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+/* ---sider--- */
+.body .sider {
+    top: 65px;
+    width: 200px;
+    height: calc(100vh - 60px);
+    background: #333333;
+    position: fixed;
+}
+
+.body .sider ul{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0;
+}
+
+.body .sider ul li.active{
+    background-color: #4f4f4f;
+}
+
+.body .sider ul li a {
+    text-decoration: none;
+    color: #fff;
+    border-bottom: 1px solid #515151;
+    display: block;
+    padding: 10px;
+}
+
+.body .sider ul li a:hover{
+    color: #acacac;
+}
+
+/* --main-- */
+.body .main{
+    position: relative;
+    left: 200px;
+    margin: 15px;
+    width: calc(100% - 230px);
+}

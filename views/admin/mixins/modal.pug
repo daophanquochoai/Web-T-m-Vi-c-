@@ -1,0 +1,32 @@
+mixin modal(jobDetail, modalId, modalTitle, btnType)
+    .box-container(modalId=modalId)
+        .box-content 
+            .box-head 
+                .box-title #{modalTitle} 
+                .box-close <i class="fa-solid fa-xmark"></i>
+            .box-body 
+                .box-form 
+                    form(form-action-cv) 
+                        div(class="form-group")
+                            label(for="HoTen") Họ tên 
+                            input(type="text" class="form-control" id="HoTen" name="HoTen" value=jobDetail.infoUser.hoTen readonly)
+                        div(class="form-group")
+                            label(for="tenCV") Tên công việc
+                            input(type="text" class="form-control" id="tenCV" name="tenCV" value=jobDetail.infoJob.tenCV readonly)
+                        div(class="form-group")
+                            label(for="thongBao") Lời nhắn
+                            if(btnType=="accept")
+                                textarea(name="thongBao" id="thongBao" class="form-control" rows="5" textarea-mce)
+                            else 
+                                textarea(name="thongBao" id="thongBao" class="form-control" rows="5" textarea-mce)
+                                    | Thật tiếc nhưng chúng tôi thấy bạn chưa phù hợp với vị trí này!
+
+                        input(type="text" class="form-control d-none" name="type" readonly)
+
+                        button(
+                            type="submit"
+                            userId=jobDetail.userId 
+                            maCV=jobDetail.maCV
+                            class="btn btn-primary btn-large mt-2" 
+                            button-submit=btnType
+                        ) Gửi

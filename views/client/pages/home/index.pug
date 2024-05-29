@@ -1,0 +1,45 @@
+extends ../../layouts/default.pug 
+include ../../mixins/time-apply.pug
+include ../../mixins/box-head.pug
+include ../../mixins/swiper.pug
+
+block main 
+    //- Hien thi trang 1 CV (10 trang)
+    .section-list.container
+        +box-head("Danh sách công việc")
+        div(class="swiper-contain")
+            +swiper(jobs)
+        button(class="read-all") 
+            a(href=`/jobs`) 
+                b Xem tất cả  
+    div(company)
+        .section-list.container
+            +box-head("Danh sách công ty")
+            .section-item.row.row-cols-1.row-cols-md-1.row-cols-lg-1.p-4.justify-content-center
+                .item.col-sm-12.col-md-12.col-lg-12.col-xl-10.mb-4
+                    if(companies.length > 0)
+                        each company in companies 
+                            .box.mb-4.d-flex
+                                .item-left.d-flex.mb-2
+                                    .item-img
+                                        a(href=`/companys/detail/${company.slug}`) 
+                                            img(src=company.logo, alt="logo công ty")
+                                    .ttle-job 
+                                        .name-job 
+                                            a(href=`/companys/detail/${company.slug}`) #{company.tenCT}
+                                        //- Điền vào tên
+                                        .name-comp Địa điểm : #{company.diaDiem}
+                                        //- Điền tên công ty 
+                                .item-right
+                                    .info-job.d-flex.flex-column
+                                        span.desr-title Mô tả :
+                                        span.desr 
+                                            | !{company.moTa}
+            button(class="read-all" style="margin-top: -50px;") 
+                a(href=`/jobs`) 
+                    b Xem tất cả
+          
+
+block script 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    script(src="/js/swiper.js") 

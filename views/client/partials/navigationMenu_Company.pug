@@ -1,0 +1,15 @@
+.container 
+    form(action="/companys" method="get" form-search-company) 
+        .navbar-contai.row.row-cols-2.row-cols-lg-4
+            .item-nav.col-12.col-sm-12.col-lg-12.col-xl-10.p-2
+                .tenCongTy.d-flex.align-items-center
+                    .tenCT 
+                        input(type="text" name="tenCT" placeholder="Tên công ty")
+                    .khuvuc  
+                        select(name="khuvuc" id="khuvuc")
+                            option(value="kvuc") Tất cả tỉnh/thành phố
+                            each area in areas 
+                                option(value=area.tenKV) #{area.tenKV}
+            .item-nav.col-sm-6.col-lg-4.col-xl-2.p-2
+                .tim
+                    button(type='submit') Tìm kiếm

@@ -1,0 +1,50 @@
+doctype html 
+header 
+    link(rel="stylesheet", href="/admin/css/thongtinct.css")
+    link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous")
+    link( rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css")
+    title Thông tin công ty
+body
+    .header-list.container
+        .nav-list
+            a.navbar-item.head(href='') IT COMPANY
+            a.navbar-item.nav-button(href='tongquanct.html') Tổng quan
+            a.navbar-item.nav-button(href='thongtinct.html') Thông tin công ty
+            a.navbar-item.nav-button(href='#') Quản lý việc làm
+            a.navbar-item.nav-button(href='#') Quản lý CV
+        .card-head 
+            div.title 
+                div.name.card-title Thông tin công ty
+            div.chinhsua 
+                button.chinh.card-title(type='button') Chỉnh sửa
+        .card-body
+            div.tencongty
+                div.CompanyName
+                    label.tenct(for="comName", title="Tên công ty") Tên công ty
+                div.nhapten 
+                    input(id="tenct" aria-required="true" type="text" placeholder="Nhập tên công ty")
+            div.lienhe-container
+                div.lienhe-item
+                    div.email 
+                        label.em(for="email") Email
+                    div.nhapemail 
+                        input(id="email" aria-required="true" type="text")
+                div.lienhe-item 
+                    div.phone
+                        label.sdt(for="phone") Số điện thoại
+                    div.nhapsdt
+                        input(id="phone" aria-required="true" type="text")
+                div.lienhe-item
+                    div.address
+                        label.diachi(for="address") Địa chỉ
+                    div.nhapdiachi
+                        input(id="address" aria-required="true" type="text")
+            //- div.info-item Số lượng nhân sự
+            //- div.info-item Thời gian làm việc 
+            //- div.info.item Link website
+            div.mota 
+                div.motangan
+                    label.diachi(for="address") Mô tả
+                div.nhapmota
+                    input(id="motangan" aria-required="true" type="text")
+            

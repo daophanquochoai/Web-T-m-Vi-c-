@@ -1,0 +1,61 @@
+.header
+    .container.d-flex.justify-content-between.align-items-center
+        .container-logo.d-flex.align-items-center.justify-content-center
+            a(href="/" link-home) 
+                <span>T</span>uyen<span>d</span>ung 
+        .container-info.d-flex.d-flex.align-items-center.justify-content-center
+            if(User)
+                .notice
+                    img(src="/images/notification-bell.png", alt="notice")
+                    span(
+                        class="badge bg-danger"
+                        badge-soLuong = User.userId
+                    ) #{Announces.SoLuongChuaXem}
+
+
+                    .notice-box 
+                        p Thông báo 
+                        .notice-content
+                            ul(class="list-notice" list-notice=User.userId)
+                                if(Announces.length > 0)
+                                    each announce in Announces
+                                        li(class=`notice-item ${announce.daXem == false ? "not-seen" : ""}` userId=announce.userId maCV=announce.maCV)  
+                                            a(href=`/announce/${announce.maCV}/${announce.userId}` class="notice-link") 
+                                                img(src=announce.infoCT_CV.logo alt=announce.infoCT_CV.tenCT)
+                                                .notice-item_content
+                                                    span(class="notice-item_tenCT") #{announce.infoCT_CV.tenCT}
+                                                    span(class="notice-item_tenCV") #{announce.infoCT_CV.tenCV} 
+                                                    span(class="notice-item_time") #{announce.thoiGianGui} 
+                        
+
+            .info.d-flex.align-items-center.justify-content-center
+                .box-img.d-flex.align-items-center.justify-content-center
+                    if(User)
+                        a(
+                            href="javascript:;"
+                            my-account
+                            class="me-2"
+                            style="display: flex; align-items: center;"
+                        ) 
+                            img(src=(User.avatar || "/images/user-circle-solid-24.png") alt="user" style="object-fit: cover;width: 35px;height: auto;")
+                            span.name #{User.hoVaTen}
+                        a(
+                            href=`/jobs/applied/${User.userId}`
+                            class="btn btn-primary btn-sm me-2"
+                        ) Công việc đã nộp
+                        if(User.congTyId)
+                            a(
+                                href=`/${prefixAdmin}/dashboard/${User.congTyId}`
+                                class="btn btn-outline-info btn-sm me-2"
+                            ) Dashboad 
+                        a(
+                            href=`/user/logout`
+                            class="btn btn-outline-danger btn-sm"
+                        ) Đăng xuất 
+                    else 
+                        a(
+                            href=`/user?view=login`
+                            class="btn btn-outline-info btn-sm"
+                        ) Đăng nhập/Đăng kí
+
+                            

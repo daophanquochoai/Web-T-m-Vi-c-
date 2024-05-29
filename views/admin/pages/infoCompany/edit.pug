@@ -1,0 +1,112 @@
+extends ../../layouts/default.pug 
+include ../../mixins/alert.pug
+
+block main 
+    +alert-error(5000)
+    +alert-success(5000)
+
+    h2 Cập nhật thông tin công ty
+
+    div(class="box")
+        div(class="box-body")
+            form(
+                action=`/${prefixAdmin}/infoCompany/${company.congTyId}/edit`
+                method="post"
+                form-edit-infoCompany
+                enctype="multipart/form-data"
+            )   
+                div(class="box-info mb-2")
+                    div(image-preview class="box-info_img") 
+                        .anhcongty
+                            img(
+                                src= company.logo , 
+                                alt="Logo's Company"
+                                image-preview-see 
+                            )
+                            
+                        input(
+                            type="file"
+                            class="form-control-file d-none"
+                            name="logo"
+                            accept="image/*"
+                            image-preview-input
+                        )
+
+                        div(class="icon-img-company") 
+                            <i class="fa-solid fa-camera-retro"></i>
+
+                
+                    div(class="box-info_texts")
+                        div(class="form-group")
+                            label(for="tenCT") <b>Tên công ty</b>
+                            input(
+                                type="text"
+                                class="form-control"
+                                id="tenCT"
+                                name="tenCT"
+                                required
+                                value=company.tenCT
+                            )
+                        div(class="form-group")
+                            label(for="diaDiem") <b>Địa chỉ công ty</b> 
+                            input(
+                                type="text"
+                                class="form-control"
+                                id="diaDiem"
+                                name="diaDiem"
+                                required
+                                value=company.diaDiem
+                            )
+                        div(class="form-group")
+                            label(for="sdtCT") <b>Số điện thoại công ty</b> 
+                            input(
+                                type="text"
+                                class="form-control"
+                                id="sdtCT"
+                                name="sdtCT"
+                                required
+                                value=company.sdtCT
+                            )
+                        div(class="form-group")
+                            label(for="emailCT") <b>Email công ty</b> 
+                            input(
+                                type="email"
+                                class="form-control"
+                                id="emailCT"
+                                name="emailCT"
+                                required
+                                value=company.emailCT
+                            )
+                        div(class="form-group")
+                            label(for="quyMo") <b>Quy mô</b> 
+                            input(
+                                type="number"
+                                class="form-control"
+                                id="quyMo"
+                                name="quyMo"
+                                required
+                                min="1"
+                                value=company.quyMo
+                            )
+
+
+
+                
+                div(class="form-group")
+                    label(for="moTa") <b>Mô tả công ty</b>
+                    textarea(
+                        class="form-control"
+                        id="moTa"
+                        name="moTa"
+                        rows="5"
+                        textarea-mce
+                    ) #{company.moTa}
+                
+                    
+                    
+                div(class="form-group col-12 mt-2")
+                    button(
+                        type="submit"
+                        class="btn btn-primary"
+                        style="width:20%"
+                    ) Cập nhật

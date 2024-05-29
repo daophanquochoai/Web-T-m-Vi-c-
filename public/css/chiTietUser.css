@@ -1,0 +1,318 @@
+/* header  */
+*{
+    box-sizing: border-box;
+}
+
+
+select{
+    outline: none;
+}
+p{
+    margin-bottom: 10px;
+}
+
+:root{
+    --blue-font : #50a5ed;
+    --font-color--hover : #50a5ed;
+    --font-color : #fff;
+
+}
+
+
+/* section header */
+.section-CT-header {
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+.section-CT-header{
+    width: 100%;
+    height: 250px;
+}
+.section-CT-header .header-bg{
+    background-image: url("https://static.vecteezy.com/system/resources/previews/003/127/954/non_2x/abstract-template-blue-background-white-squares-free-vector.jpg");
+    width: 100%;
+    height: 60%;
+}
+.section-CT-header .header-infoCT .box-title{
+    padding: 0 16%;
+}
+.section-CT-header .header-infoCT .box-title .item-img img{
+    width: 100%;
+    /* height: 100%; */
+    object-fit: cover;
+}
+.section-CT-header .header-infoCT .box-title .item-img{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--blue-font);
+    margin-top: -70px;
+    position: relative;
+}
+.section-CT-header .header-infoCT .box-title .title-CT{
+    font-size: 40px;
+    font-weight: 700;
+}
+.negative{
+    position: fixed;
+    top: 20%;
+    left: -10px;
+    background-color: #fafffe;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+/* section body */
+.section-CT-body{
+    margin-bottom: 40px;
+}
+.section-CT-body .navbar-Ct .item-trangchu, .item-tintuyen{
+    margin-top: 20px;
+    color: var(--blue-font);
+    font-weight: 600;
+    padding: 7px 10px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+}
+.section-CT-body .navbar-Ct .active{
+    background-color: #50a5ed;
+    color: var(--font-color);
+    font-weight: 600;
+    padding: 7px 10px;
+    font-size: 18px;
+    text-align: center;
+}
+.section-CT-body .body-trangchu, .body-tintuyen{
+    background-color: var(--blue-font);
+    padding: 40px;
+}
+.section-CT-body .body-tintuyen{
+    display: none;
+}
+.section-CT-body .body-trangchu .container-item .item .title{
+    color: var(--font-color);
+    font-size: 20px;
+}
+.section-CT-body .body-trangchu .container-item .item .text{
+    background-color: var(--font-color);
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 20px;
+    color: var(--blue-font);
+    font-weight: 500;
+    width: 100%;
+    outline: var(--font-color--hover);
+    border: none;
+}
+.section-CT-body .body-trangchu .container-item .item input{
+    text-align: center;
+}
+.section-CT-body .body-trangchu .container-item .item select option{
+    text-align: center;
+}
+.section-CT-body .body-trangchu .container-item .item_button{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.section-CT-body .body-trangchu .container-item .item_button button{
+    padding: 5px 10px;
+    background-color: var(--font-color);
+    border: none;
+    border-radius: 15px;
+    margin-top: 10px;
+    color: var(--font-color--hover);
+    font-size: 20px;
+}
+.section-CT-body .body-trangchu .container-item .item_button button.xac_nhan{
+    display: none;
+}
+
+/* trang nha tuyen dung */
+.section-CT-body .body-tintuyen .box-item-not-account{
+    display: flex;
+    justify-content: center;
+    /* display: none; */
+}
+.section-CT-body .body-tintuyen .box-item-not-account span{
+    background-color: var(--font-color);
+    padding: 10px 20px;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--font-color--hover);
+    border-radius: 30px;
+    cursor: pointer;
+}
+.section-CT-body .body-tintuyen .box-item-account .item-account.box_anh_dai_dien{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.section-CT-body .body-tintuyen .box-item-account .item-account .anhcongty{
+    width: 100px;
+    height: 100px;
+    background-color: var(--font-color);
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.section-CT-body .body-tintuyen .box-item-account .icon-change-img-company{
+    position: absolute;
+    bottom: 0px;
+    color: #4c4c4c;
+    font-size: 20px;
+    right: 46%;
+    opacity: 0.6;
+}
+
+.section-CT-body .body-tintuyen .box-item-account .icon-change-img-company:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* ---anh luc tao */
+.section-CT-body .body-tintuyen .box-item-account .icon-create-img-company{
+    position: absolute;
+    bottom: 0px;
+    color: #4c4c4c;
+    font-size: 20px;
+    right: 46%;
+    opacity: 0.6;
+}
+
+.section-CT-body .body-tintuyen .box-item-account .icon-create-img-company:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.section-CT-body .body-tintuyen .box-item-account .item-account .anhcongty img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.section-CT-body .body-tintuyen .box-item-account .item-account .title{
+    color: var(--font-color);
+    font-size: 20px;
+}
+.section-CT-body .body-tintuyen .box-item-account .item-account .text{
+    background-color: var(--font-color);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 20px;
+    color: var(--blue-font);
+    font-weight: 500;
+    width: 100%;
+    outline: var(--font-color--hover);
+    border: none;
+}
+
+.section-CT-body .body-tintuyen .box-item-account .item-account .text_moto{
+    background-color: var(--font-color);
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 20px;
+    color: var(--blue-font);
+    font-weight: 500;
+    width: 100%;
+    outline: var(--font-color--hover);
+    border: none;
+}
+
+.section-CT-body .body-tintuyen .box-item-account .item-account-button button{
+    padding: 5px 10px;
+    background-color: var(--font-color);
+    border: none;
+    border-radius: 15px;
+    margin-top: 10px;
+    color: var(--font-color--hover);
+    font-size: 20px;
+}
+
+.section-CT-body .body-tintuyen .box-item-account .item-account-button button:hover{
+    background-color: #edf2f6;
+}
+
+.section-CT-body .body-tintuyen .box-item-account .item-account-button button.account-xac_nhan{
+    display: none;
+}
+
+
+/* -------------------div Error----------- */
+.body-trangchu .container-item .align-right {
+    text-align: right;
+}
+
+#errorDisplay{
+    background: #fff;
+    padding: 15px;
+    display: none;
+    color: red;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+/* ----thay avatar */
+.header-infoCT .item-img .icon-change-img-user{
+    position: absolute;
+    text-align: center;
+    bottom: 10px;
+    /* right: 50px; */
+    width: 100%;
+    font-size: 25px;
+    color: #fff;
+    background: #7bcef8ba;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.header-infoCT .item-img .icon-change-img-user:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+
+
+
+/* ---alert */
+[show-alert] {
+    position: fixed;
+    top: 70px;
+    right: 15px;
+    font-size: medium;
+    z-index: 9999;
+  }
+  
+  [show-alert].alert-hidden {
+    animation-name: alert-hidden;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes alert-hidden {
+    from {
+      right: 15px;
+    }
+    to {
+      right: -100%;
+      display: none;
+    }
+  }
+  
+  [show-alert] [close-alert] {
+    background: #ffffffc4;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  /* ---end alert */
+

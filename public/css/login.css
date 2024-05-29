@@ -1,0 +1,216 @@
+/* header  */
+*{
+    box-sizing: border-box;
+}
+
+
+select{
+    outline: none;
+}
+p{
+    margin-bottom: 10px;
+}
+
+:root{
+    --blue-font : #50a5ed;
+    --font-color--hover : #50a5ed;
+    --font-color : #fff;
+
+}
+body{
+    display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* 100% chiều cao của viewport */
+      margin: 0;
+      font-size: 10px;
+}
+.box{
+    width: 800px;
+    border: 1px solid;
+    border: 1px solid;
+    padding: 40px 20px;
+    position: relative;
+}
+.box .box-left, .box-right{
+    width: 50%;
+    height: 100%;
+}
+.box  form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.box  form .bd{
+    font-size: 2em;
+    color: var(--blue-font);
+    font-weight: 500;
+}
+.box  form .gender{
+    display: flex;
+    color: var(--blue-font);
+    font-size: 2em;
+    font-weight: 500;
+}
+.box  .item-username .title{
+    font-size: 2em;
+    color: var(--blue-font);
+    font-weight: 500;
+}
+.box  .item-username input{
+    border: none;
+    font-size: 20px;
+    outline-color: var(--blue-font);
+    border-bottom: 2px solid var(--blue-font);
+    margin-bottom: 2rem;
+    color: var(--blue-font);
+}
+.box .item-username .button-click{
+    background-color: var(--blue-font);
+    color: var(--font-color);
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 5px 8px;
+}
+.box .box-left form{
+    display: none;
+}
+.box-overplay{
+    width: 50%;
+    height: 100%;
+    background-image: url("https://img.cengroup.vn/images/news/bigimage/ngoclt/TIN%20TUC%20CEN/nhalanhdaotruyencamhungdoanhnhansaigon-1535099427.jpg");
+    position: absolute;
+    background-size: 100% 100%;
+}
+.box-overplay .dangky, .quenmk, .dangnhap{ 
+    font-size: 16px;
+    color: var(--font-color);
+    font-weight: 500;
+    margin: 20px;
+    cursor: pointer;
+}
+.box-overplay .dangnhap{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+.box-dangdangnhap-click{
+    top: 0;
+    left: 0;
+}
+.box-dangky-click{
+    top: 0;
+    right: 0;
+}
+
+
+[otp-password] h1{
+    color: var(--blue-font);
+}
+
+[otp-password] label{
+    font-size: 2em;
+    color: var(--blue-font);
+    font-weight: 500;
+}
+
+[otp-password] input{
+    border: none;
+    font-size: 20px;
+    outline-color: var(--blue-font);
+    border-bottom: 2px solid var(--blue-font);
+    margin-bottom: 2rem;
+    color: var(--blue-font);
+}
+[reset-password] h1{
+    color: var(--blue-font);
+}
+
+[reset-password] label{
+    font-size: 2em;
+    color: var(--blue-font);
+    font-weight: 500;
+}
+
+[reset-password] input{
+    border: none;
+    font-size: 20px;
+    outline-color: var(--blue-font);
+    border-bottom: 2px solid var(--blue-font);
+    margin-bottom: 2rem;
+    color: var(--blue-font);
+}
+
+
+/* .reposive 
+p.res-dangky.res Đăng ký
+p.res-dangky.res Quên mật khẩu 
+p.res-dangky.res Đăng nhập */
+.reposive{
+    display: none;
+}
+.reposive .res{
+    background-color: var(--blue-font);
+    padding: 5px;
+    color: var(--font-color);
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    .box-overplay{
+        display: none !important;
+    }
+    .box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .reposive{
+        display: block;
+    }
+}
+
+/* ---alert */
+[show-alert] {
+    position: fixed;
+    top: 70px;
+    right: 15px;
+    font-size: medium;
+    z-index: 9999;
+  }
+  
+  [show-alert].alert-hidden {
+    animation-name: alert-hidden;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes alert-hidden {
+    from {
+      right: 15px;
+    }
+    to {
+      right: -100%;
+      display: none;
+    }
+  }
+  
+  [show-alert] [close-alert] {
+    background: #ffffffc4;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  /* ---end alert */

@@ -1,0 +1,59 @@
+extends ../../layouts/login-layout.pug 
+include ../../mixins/alert.pug
+ 
+block main 
+    +alert-error(5000)
+
+    .box.d-flex
+        .box-left
+            form(
+                class="item-username form-left" 
+                form-register
+                method="post"
+                action="/user/register"
+            ) 
+                label(for="fullname" class="title") Họ và Tên
+                input(name="fullname" id="fullname" type="text" required)
+                label(for="sdt" class="title") Số Điện thoại
+                input(name="phone" id="sdt" type="text" required)
+                .gender 
+                    label <input type="radio" name="gender" value="nam">Nam
+                    label <input type="radio" name="gender" value="nữ">Nữ
+                label(for="birthdate" class="bd") Date of Birth
+                input(type="date" id="birthdate" name="birthdate" required)
+                label(for="username-left" class="title") Tài khoản 
+                input(name="username-left" id="username-left" type="email" required)
+                label(for="password" class="title" required) Mật khẩu 
+                input(name="password" id="password" type="password")
+                button(
+                    class="button-click"
+                    type="submit"
+                ) ĐĂNG KÍ
+                div.mt-1
+                    span(style="color: #50a5ed; font-size: 14px") <i><strong>LƯU Ý</strong>: các trường trên là bắt buộc!</i>
+        .box-right
+            form(
+                method="post"
+                action="/user/login"
+                class="item-username form-right" 
+                form-login
+            )
+                label(for="username_right" class="title") Tài khoản 
+                input(name="username_right" id="username_right" type="email" required)
+                label(for="pw" class="title") Mật khẩu 
+                input(name="pw" id="pw" type="password" required) 
+                button(
+                    class="button-click"
+                    type="submit"
+                ) ĐĂNG NHẬP
+        .box-overplay.box-dangdangnhap-click
+            .dangky Đăng ký 
+            .quenmk Quên mật khẩu?
+            .dangnhap Đăng nhập
+    .reposive 
+        p.res-dangky.res Đăng ký
+        p.res-qmk.res Quên mật khẩu 
+        p.res-dangnhap.res Đăng nhập
+
+block script 
+    script(src="../js/login.js")

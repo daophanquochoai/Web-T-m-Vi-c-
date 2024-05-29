@@ -1,0 +1,57 @@
+extends ../../layouts/default.pug 
+include ../../mixins/moment.pug 
+
+block main
+    .container(detail-job)
+        h1 Trang chi tiết công việc 
+        .card.my-3
+            .card-header
+                p <b>Tên công việc: #{job.tenCV}</b> 
+            .card-body 
+                p Địa điểm: <b>#{job.tenKhuVuc}</b>
+
+                p Lương: <b>#{job.luong} triệu</b>
+
+                p Kinh nghiệm: <b>#{job.tenKinhNghiem}</b>
+
+                p Ngày tạo: 
+                    b 
+                        +formatDate(job.ngayTao)
+
+                p Ngày hết hạn:  
+                    b 
+                        +formatDate(job.hanChot)
+
+                p Trạng thái:  
+                        if (job.trangThai == true) 
+                            b(class="badge bg-success") Đang tuyển 
+                        else 
+                            b(class="badge bg-warning") Dừng tuyển 
+        .card.mb-3
+            .card-header
+                p <b>Chi tiết công việc</b> 
+            .card-body 
+                | !{job.chiTietCV}
+        span(class="d-inline-block" tabindex="0" data-toggle="tooltip" title="" tooltip)
+            button(
+                class="btn btn-warning me-1"
+                style="width: 100px"
+                button-edit=acceptEdit 
+                hetHan=job.hetHan
+                slug=job.slug
+            ) Sửa
+
+        //- a(href=`/${prefixAdmin}/job-management/${User.congTyId}/edit/${job.slug}`)
+        
+        form(
+            action="" 
+            method="get"
+            path=`/${prefixAdmin}/job-management/${User.congTyId}`
+            form-edit
+        ) 
+
+
+                
+                
+                
+

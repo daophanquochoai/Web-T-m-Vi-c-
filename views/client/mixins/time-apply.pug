@@ -1,0 +1,8 @@
+mixin time-apply(soNgayTuNgayKhoiTao, soNgayHieuLuc)
+    if(soNgayTuNgayKhoiTao - soNgayHieuLuc > 0)
+        span(style="border: none;") <strong>Hết hạn</strong>
+    else
+        if soNgayTuNgayKhoiTao == 0
+            span(style="border: none;") Công việc mới tạo 
+        else 
+            span(style="border: none;") #{soNgayTuNgayKhoiTao} ngày trước

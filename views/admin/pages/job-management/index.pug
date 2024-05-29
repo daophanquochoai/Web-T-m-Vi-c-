@@ -1,0 +1,146 @@
+extends ../../layouts/default.pug 
+include ../../mixins/moment.pug
+include ../../mixins/filterStatus.pug
+include ../../mixins/searchForm.pug
+include ../../mixins/sort.pug
+
+block main
+    div(
+        class= "alert alert-danger d-none" 
+        alert
+        data-time=4000
+    ) Công việc đã hết hạn, không thể thay đổi trang thái <span close-alert>X</span>
+
+    h2 Danh sách công việc
+
+    .card.mb-3 
+            .card-header Bộ lọc và tìm kiếm 
+            .card-body 
+                .container 
+                    .row 
+                        .col-7
+                            +filterStatus(filterStatus)
+                        .col-5 
+                            +formSearch(keyword)
+    
+    .card.mb-3 
+        .card-header Sắp xếp 
+        .card-body 
+            .row 
+                .col-4 
+                    +sort(sortObj)
+
+    .card.mb-3 
+            .card-header Danh sách 
+                .card-body 
+                    .row 
+                        .col-8 
+                        
+                        .col-4(style="text-align:right;") 
+                            a(
+                                href=`/${prefixAdmin}/job-management/${congTyId}/create`
+                                class="btn btn-outline-success"
+                            ) + Thêm mới 
+                    if(jobs.length > 0)
+                        table.table.table-hover.table-sm(box-check)
+                            thead 
+                                tr 
+                                    th STT 
+                                    th Tên công việc 
+                                    th Khu vực
+                                    th Lương  
+                                    th Kinh nghiệm 
+                                    th Ngày tạo 
+                                    th Hết hạn 
+                                    th Trạng thái
+                                    th Hành động
+                            tbody 
+                                each job, index in jobs
+                                    tr 
+                                        td #{index + 1}
+                                        td #{job.tenCV}
+                                        td #{job.khuVuc}
+                                        td #{job.luong} triệu 
+                                        td #{job.tenKinhNghiem}
+                                        td 
+                                            +formatDate(job.ngayTao)
+                                        td
+                                            div.checkbox-container
+                                                if(job.hetHan == true)
+                                                    input(type="checkbox", name="hetHan" checked=true disabled)
+                                                    <span class="checkmark"></span>
+                                                else 
+                                                    input(type="checkbox", name="hetHan" checked=false disabled)
+                                                    <span class="checkmark"></span>
+                                        td
+                                            if(job.trangThai == false)
+                                                a(
+                                                    href="javascript:;"
+                                                    class="badge rounded-pill bg-danger"
+                                                    status-job=0
+                                                    maCV=job.maCV
+                                                    hetHan=job.hetHan
+                                                ) Dừng tuyển 
+                                            else 
+                                                a(
+                                                    href="javascript:;"
+                                                    class="badge rounded-pill bg-success"
+                                                    status-job=1
+                                                    maCV=job.maCV
+                                                    hetHan=job.hetHan
+                                                ) Đang tuyển 
+                                        td 
+                                            a(href=`/${prefixAdmin}/job-management/${User.congTyId}/detail/${job.slug}`)
+                                                button(
+                                                    class="btn btn-secondary me-1"
+                                                    button-detail 
+                                                ) Xem chi tiết 
+                                            
+                                            span(class="d-inline-block" tabindex="0" data-toggle="tooltip" title="" tooltip)  
+                                                button(
+                                                    class="btn btn-warning me-1"
+                                                    button-edit-job
+                                                    button-edit=job.acceptEdit 
+                                                    hetHan=job.hetHan
+                                                    slug=job.slug
+                                                ) Sửa
+
+                                            span(class="d-inline-block" tabindex="0" data-toggle="tooltip" title="" tooltip)
+                                                button(
+                                                    class="btn btn-danger"
+                                                    button-delete-job
+                                                    button-delete=job.acceptEdit
+                                                    slug=job.slug
+                                                ) Xóa 
+                    else 
+                        .row     
+                            .col-12 
+                                div(style="text-align: center") 
+                                    b Không có danh sách để hiển thị    
+
+    div(class="paginationn" pagination=pagination)  
+
+    form(
+        action="" 
+        method="post"
+        form-status-job
+        path=`/${prefixAdmin}/job-management/${congTyId}`
+    )
+
+    form(
+        action="" 
+        method="get"
+        path=`/${prefixAdmin}/job-management/${User.congTyId}`
+        form-edit
+    ) 
+
+    form(
+        action="" 
+        method="post"
+        path=`/${prefixAdmin}/job-management/${User.congTyId}`
+        form-delete
+    ) 
+
+
+block script 
+    script(src="/admin/js/pagination.js") 

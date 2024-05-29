@@ -1,0 +1,41 @@
+mixin swiper(arr)
+    div(class="swiper mySwiper")
+        div(class="swiper-wrapper")
+            each item in arr 
+                div(class="swiper-slide") 
+                    .box.p-4
+                        .item-top.d-flex.mb-2
+                            .item-img
+                                img(src=item.company.logo, alt="logo công ty")
+                            .ttle-job 
+                                .name-job #{item.tenCV}
+                                //- Điền vào tên
+                                .name-comp #{item.company.tenCT}
+                                //- Điền tên công ty 
+                        .item-bot
+                            .info-job 
+                                span.desr #{item.luong} triệu
+                                span.desr 
+                                    +time-apply(item.soNgayTuNgayKhoiTao, item.soNgayHieuLuc)
+                            .button-ut.d-flex.justify-content-between
+                                .empty 
+                                div(class="ungTuyenAnimation ungtuyen animate__pulse" 
+                                    applied=item.applied 
+                                    dateAndStatus=item.dateAndStatus 
+                                    path=`/jobs/detail/${item.slug}`
+                                ) Ứng tuyển 
+                            .button.xem 
+                                a(href=`/jobs/detail/${item.slug}`) Xem >>
+
+
+            //- div(class="swiper-slide") Slide 2
+            //- div(class="swiper-slide") Slide 3
+            //- div(class="swiper-slide") Slide 4
+            //- div(class="swiper-slide") Slide 5
+            //- div(class="swiper-slide") Slide 6
+            //- div(class="swiper-slide") Slide 7
+            //- div(class="swiper-slide") Slide 8
+            //- div(class="swiper-slide") Slide 9
+        div(class="swiper-button-next")
+        div(class="swiper-button-prev")
+        div(lass="swiper-pagination")

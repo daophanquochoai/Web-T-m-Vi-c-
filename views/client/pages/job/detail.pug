@@ -1,0 +1,109 @@
+extends ../../layouts/job.pug 
+include ../../mixins/moment.pug
+include ../../mixins/time-apply.pug
+include ../../mixins/alert.pug
+
+block main 
+    +alert-error(5000)
+    +alert-success(10000)
+
+    .section-body.container.mb-5
+        .row
+            .container-left.col-sm-12.col-lg-8.mb-5
+                .item-top.d-flex.justify-content-between.align-items-center
+                    .item-title
+                        .title-cv #{job.tenCV}  
+                        .title-cmp #{company.tenCT}
+                    .item-info
+                        .kinhnghiem
+                            p <box-icon name='xing' type='logo' ></box-icon> Kinh nghiệm : #{job.kinhNghiem} năm 
+                        .luong 
+                            p <box-icon name='money' ></box-icon> Lương : #{job.luong} triệu
+                        .hanchot 
+                            p <box-icon class='bx-flashing' type='solid' name='alarm-exclamation'></box-icon> 
+                                span Hạn chót : 
+                                 +formatDate(job.hanChot)
+                .item-bot.col-12
+                    .item-bot-title 
+                        //- .hang
+                        //- .title-chitiet Chi tiết tuyển dụng 
+                        | !{job.chiTietCV}
+                div(class="d-none")
+                    if(congTyUserId)
+                        p(congTyIdUser) #{congTyUserId}
+                    if(applied)
+                        p(applied) #{applied}
+                span(class="d-inline-block" tabindex="0" data-toggle="tooltip" title="" tooltip)
+                    button(
+                            class="btn btn-outline-success button-ungtuyen my-2" 
+                            onClick="openUngTuyen()" 
+                            button-ungtuyen=job
+                        ) Ứng tuyển
+                    div(class="alert alert-info" role="alert" loginBeforApply) Bạn cần đăng nhập trước khi ứng tuyển!
+                        b 
+                            a(href=`/user?view=login`) Đăng nhập ngay 
+                        
+                    
+                .hanchot.d-flex.align-items-center
+                    .burst-div.me-2
+                    p.p-0.m-0 
+                        i Hạn chót vào ngày  
+                         +formatDate(job.hanChot)
+            .box-ungtuyen
+                form(
+                        action=`/jobs/apply-job/${job.maCV}` 
+                        method="post" 
+                        form-appply-job                        
+                        enctype="multipart/form-data"
+                        class="p-2"
+                ) 
+                    .from-header.d-flex.justify-content-between.align-items-center
+                        p.title-cv Ứng tuyển vị trí <span>#{job.tenCV}</span>
+                        p(class="exit" onClick="closeUngTuyen()") X
+                    .form-body.row.d-flex.align-items-center
+                        .upload.col-sm-12.col-md-6
+                            label(for="fileInput" class="d-flex align-items-center") <box-icon name='upload'></box-icon> Tải lên cv từ máy
+                            input(type="file" id="fileInput" name="file" accept=".pdf, .doc, .docx" class="input_file" style="visibility:hidden" onChange="upload()")                       
+                        select(class="col-sm-12 col-md-6" select-areaUT name="khuVucUT")
+                            option(value="" disabled selected hidden) Khu vực ứng tuyển 
+                            each area in jobAreas
+                                option(value=area.maKV) #{area.tenKV}
+                    button(class="ungtuyen" button-submitUT) Nộp CV
+            div(class="overplay" onClick="closeUngTuyen()")
+            .container-right.col-sm-12.col-lg-4
+                .box-top.d-flex.justify-content-between.align-items-center
+                    .logo-cmp 
+                        a(href=`/companys/detail/${company.slug}`) 
+                            img(src=company.logo, alt=company.tenCT)   
+                        a(href=`/companys/detail/${company.slug}`) 
+                            .name-cmp #{company.tenCT}
+                    .box-item
+                        .quymo 
+                            box-icon(name='building-house')
+                            p #{company.quyMo} nhân viên 
+                        .locate 
+                            box-icon(name='location-plus' type='solid')
+                            p #{company.diaDiem}
+                .box-bot 
+                    each job in jobOfCompany
+                        .box-item.p-2
+                            .item.p-2
+                                .item-top.d-flex.mb-2
+                                    .item-img
+                                        img(src=job.company.logo, alt=job.company.tenCT)   
+                                    .ttle-job.ms-4
+                                        a(href=`/jobs/detail/${job.slug}`)
+                                            .name-job #{job.tenCV}
+                                        //- Điền vào tên
+                                        .name-comp #{job.company.tenCT}
+                                        //- Điền tên công ty 
+                                .item-bot
+                                    .info-job 
+                                        span.desr #{job.luong} triệu
+                                        span.desr 
+                                            +time-apply(job.soNgayTuNgayKhoiTao, job.soNgayHieuLuc)
+                                    .button-xem.d-flex.justify-content-between
+                                        .empty 
+                                        .ungtuyen.animate__pulse 
+                                            a(href=`/jobs/detail/${job.slug}`) Xem >>
+                    

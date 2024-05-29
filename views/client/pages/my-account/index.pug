@@ -1,0 +1,144 @@
+extends ../../layouts/user-account.pug 
+include ../../mixins/alert.pug
+
+
+
+block main
+
+    +alert-error(5000)
+
+    .section-CT-body.container            
+        .navbar-Ct.d-flex 
+            .item-trangchu.active.box Thông Tin người dùng
+            .item-tintuyen.box Thông tin nhà tuyển dụng 
+        .body-trangchu 
+            .container-item 
+
+                div(id="errorDisplay" class="align-right")
+
+                form(action=`/my-account/edit/info-user/${User.userId}`, method="post" form-user) 
+                    .item.form-group
+                        p.title Họ và tên :
+                        input.text(name="name" value=User.hoVaTen class="form-control" required)
+                    .item.form-group 
+                        p.title Số điện thoại :
+                        input.text(name="sdt" value=User.sdt class="form-control")
+                    .item.form-group
+                        p.title Giới tính
+                        select(name="gioiTinh" class="text form-control")
+                            option(value="Nam" selected=(User.gioiTinh == true ? true : false)) Nam
+                            option(value="Nữ" selected=(User.gioiTinh == false ? true : false)) Nữ
+                            //- option(value="Nam") Nam
+                            //- option(value="Nữ") Nữ
+                    .item.form-group 
+                        p.title Ngày sinh :
+                        input.text(name="ngaySinh" class="text"  type="date" value=User.ngaySinh)
+                        //- value=User.ngaySinhFormatted
+                        
+                    .item.form-group
+                        p.title Tài khoản :
+                        input(name="email" value=User.email class="text form-control" type="email" required)
+                    .item.form-group 
+                        p.title Mật khẩu
+                        input(type = 'password' name="matKhau" class="form-control").text
+                    .item_button.form-group 
+                        button(class="xac_nhan" type="submit") Xác nhận
+                .item_button 
+                        button.sua Sửa thông tin
+        .body-tintuyen 
+            if(!company)
+                .box-item-not-account 
+                    span NÂNG CẤP NGAY
+                .box-item-account 
+                    form(
+                        action=`/my-account/create/company` 
+                        method="post" 
+                        form-create-company
+                        enctype="multipart/form-data"
+                        class="d-none"
+                    ) 
+                        .item-account.box_anh_dai_dien(image-preview-create-company) 
+                            .anhcongty
+                                img(
+                                    src="https://cdn.photoroom.com/v1/assets-cached.jpg?path=backgrounds_v3/white/Photoroom_white_background_extremely_fine_texture_only_white_co_d4046f3b-0a21-404a-891e-3f8d37c5aa94.jpg", 
+                                    image-preview-see 
+                                )
+                                
+                            input(
+                                    type="file"
+                                    class="form-control-file d-none"
+                                    name="logo"
+                                    accept="image/*"
+                                    image-preview-input
+                                )
+
+                            div(class="icon-create-img-company") 
+                                <i class="fa-solid fa-camera-retro"></i>
+                            
+                        .item-account
+                            p.title Tên công ty :
+                            input.text(name="tenCT")
+                        .item-account
+                            p.title Quy mô :
+                            input.text(name="quyMo" type="number" min="1")
+                        .item-account
+                            p.title Địa chi :
+                            input.text(name="diaDiem")
+                        .item-account
+                            .acount-sdt 
+                                p.title Số điện thoại :
+                                input.text(name="sdtCT")
+                            .account-email 
+                                p.title Email :
+                                input.text(name="emailCT" type="email")  
+                        .item-account-button 
+                            button(type="submit") Tạo mới
+
+            else
+                .box-item-account 
+                    form(
+                        action=`/my-account/edit/info-company/${company.congTyId}` 
+                        method="post" 
+                        form-info-company
+                        enctype="multipart/form-data"
+                    ) 
+                        .item-account.box_anh_dai_dien(image-preview-create-company) 
+                            .anhcongty
+                                img(
+                                    src=company.logo
+                                    alt=company.tenCT
+                                    image-preview-see 
+                                )
+                                
+                            input(
+                                    type="file"
+                                    class="form-control-file d-none"
+                                    name="logo"
+                                    accept="image/*"
+                                    image-preview-input
+                                )
+
+                            div(class="icon-change-img-company") 
+                                <i class="fa-solid fa-camera-retro"></i>
+                            
+                        .item-account
+                            p.title Tên công ty :
+                            input.text(name="tenCT" value=company.tenCT)
+                        .item-account
+                            p.title Quy mô :
+                            input.text(name="quyMo" value=company.quyMo type="number" min="1")
+                        .item-account
+                            p.title Địa chi :
+                            input.text(name="diaDiem" value=company.diaDiem)
+                        .item-account
+                            .acount-sdt 
+                                p.title Số điện thoại :
+                                input.text(name="sdtCT" value=company.sdtCT)
+                            .account-email 
+                                p.title Email :
+                                input.text(name="emailCT" value=company.emailCT type="email")   
+                        .item-account-button 
+                            button.account-xac_nhan(type="submit") Xác nhận
+
+                    .item-account-button 
+                        button.account-sua Sửa thông tin

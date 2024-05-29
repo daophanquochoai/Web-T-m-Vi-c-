@@ -1,0 +1,36 @@
+//- Thanh narbar
+.container 
+    form(form-search) 
+        .navbar-contai.row.row-cols-2.row-cols-lg-4
+            .item-nav.col-12.col-sm-12.col-lg-12.col-xl-4.p-2
+                .vitri.d-flex.align-items-center
+                    .vt 
+                        input(type="text" name="vitri" placeholder="Vị trí tuyển dụng" style="border: none; width: 200px; height: 50px;" value="")
+                    .khuvuc  
+                        select(name="area" id="khuvuc" select-area)
+                            option(value="all") Tất cả tỉnh/thành phố
+                            each area in areas 
+                                option(value=area.maKV) #{area.tenKV}
+            .item-nav.col-sm-6.col-lg-4.col-xl-3.p-2
+                .kinhnghiem 
+                    select(name="experience" id="exp" select-experiece)
+                        option(value="all") Tất cả kinh nghiệm
+                        option(value="0") Chưa có kinh nghiệm
+                        option(value="less1") Dưới 1 năm
+                        option(value="1") 1 năm
+                        option(value="2") 2 năm
+                        option(value="3") 3 năm
+                        option(value="4") 4 năm
+                        option(value="5") 5 năm
+                        option(value="over5") Trên 5 năm
+            .item-nav.col-sm-6.col-lg-4.col-xl-3.p-2
+                .luong 
+                    select(name="salary" id="luong" select-salary)
+                        option(value="all") Chọn mức lương
+                        option(value="0-10") Dưới 10 triệu
+                        option(value="10-15") 10 - 15 triệu
+                        option(value="15-20") 15 - 20 triệu
+                        option(value="20-1000") Trên 20 triệu
+            .item-nav.col-sm-6.col-lg-4.col-xl-2.p-2
+                .tim
+                    button(type='submit') Tìm kiếm

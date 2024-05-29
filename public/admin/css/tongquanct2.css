@@ -1,0 +1,154 @@
+:root{
+    --blue-font : #50a5ed;
+    --font-color--hover : #50a5ed;
+    --font-color : #fff;
+}
+/* body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+} */
+
+.nav-list{
+    height:100%;
+    width:200px;
+    position:fixed;
+    z-index:1;
+    overflow:auto;
+    display:block;
+    color:#000;
+    background-color:var(--font-color);
+    border-inline-end: 1px solid rgba(5, 5, 5, 0.06);
+}
+.nav-list .navbar-item{
+    padding:8px 16px;
+    float:left;
+    width:auto;
+    border:none;
+    display:block;
+    outline:0;
+}
+.nav-list .navbar-item{
+    width:100%;
+    display:block;
+    padding:8px 16px;
+    text-align:left;
+    white-space:normal;
+    float:none;
+}
+.nav-list .head{
+    padding: 30px 16px;
+    display:inline-block;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    font-size: 24px;
+    color: var(--blue-font);
+    border-right: 1px solid #edf2f9;
+    border-bottom: 1px solid #edf2f9;
+    font-weight: 800;
+    height: 50px;
+}
+
+.nav-list .nav-button:hover{
+    color:#190157!important;
+    background-color:#ccc!important;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+.nav-list .nav-button{
+    border:none;
+    display:inline-block;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    background-color:inherit;
+    cursor:pointer;
+    white-space:nowrap;
+    white-space:normal;
+    border-inline-end: 1px solid rgba(5, 5, 5, 0.06);
+}
+
+/* .nav-list .nav-button{
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+} */
+
+.nav-list .nav-button:disabled{
+    cursor:not-allowed;
+    opacity:0.3;
+}
+
+.nav-content{
+    content:"";
+    display:table;
+    clear:both;
+    padding:0.01em 16px;
+}
+
+/* .content-view .nav-header{
+    align-items: center;
+    display: flex;
+    flex: 1 1;
+    justify-content: space-between;
+    padding: 0 25px;
+    height: 1280px;
+    width: 40px;
+} */
+/* .content-view .nav-content{
+    margin-top: 30px;
+    margin-left: 20%;
+    position:fixed;
+    z-index:1;
+    overflow:auto;
+    display:block;
+    color:#000;
+    background-color:#ffffff;
+} */
+
+.content-view .nav-header{
+    padding: 30px 16px;
+    display: flex;
+    overflow:hidden;
+    justify-content: flex-end;
+    align-items: center;
+    text-decoration:none;
+    color:inherit;
+    height: 50px;
+    border-bottom: 1px solid #edf2f9;
+    
+}
+
+.content-view .nav-header .item {
+    margin-right: 10px;
+    border: none;
+    background-color: white;
+}
+
+.content-view .nav-content{
+    display: inline-block;
+    margin-left: 200px;
+}
+
+.content-view .nav-content .body{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.content-view .nav-content .body .Job, .CV, .Info{
+    
+    border: 1px solid black;
+    padding: 10px; /* Thêm padding để tạo khoảng cách giữa nội dung và viền */
+    width: 80%; /* Chỉ định chiều rộng cố định của mỗi khung */
+
+}
+

@@ -1,0 +1,101 @@
+extends ../../layouts/default.pug 
+include ../../mixins/moment.pug
+include ../../mixins/filterStatus.pug
+include ../../mixins/searchForm.pug
+include ../../mixins/sort.pug
+include ../../mixins/searchForm.pug
+
+
+block main
+    h2 Danh sách CV
+
+    .card.mb-3 
+        .card-header Bộ lọc và tìm kiếm 
+        .card-body 
+            .container 
+                .row 
+                    .col-7
+                        +filterStatus(filterStatus)
+                    .col-5 
+                        +formSearch(keyword)
+    
+    .card.mb-3 
+        .card-header Sắp xếp 
+        .card-body 
+            .row 
+                .col-4 
+                    +sort(sortObj)
+
+    .card.mb-3 
+            .card-header Danh sách 
+            .card-body 
+                if(jobsDetail.length > 0)
+                    table.table.table-hover.table-sm(box-check)
+                        thead 
+                            tr 
+                                th STT 
+                                th Tên công việc 
+                                th Họ tên
+                                th Số điện thoại 
+                                th Email 
+                                th Ngày gửi 
+                                th Khu vực ứng tuyển
+                                th Trạng thái
+                                th Hành động
+                        tbody
+                            each jobDetail, index in jobsDetail
+                                tr 
+                                    td #{index + 1}
+                                    td #{jobDetail.infoJob.tenCV}
+                                    td #{jobDetail.infoUser.hoTen}
+                                    td #{jobDetail.infoUser.sdt} 
+                                    td #{jobDetail.infoUser.email} 
+                                    td 
+                                        +formatDate(jobDetail.thoiGianNop)
+                                    td #{jobDetail.infoArea.tenKV}
+                                    td
+                                        if(jobDetail.daXem == false)
+                                            span(
+                                                href="#"
+                                                class="badge rounded-pill bg-warning"
+                                            ) Chưa xem
+                                        else 
+                                            span(
+                                                href="#"
+                                                class="badge rounded-pill bg-success"
+                                            ) Đã xem
+                                    td 
+                                        a(href=`javascript:;`)
+                                            button(
+                                                class="btn btn-secondary me-1"
+                                                button-detail-cv=jobDetail.maCTCV
+                                            ) Xem chi tiết 
+                                        span(class="d-inline-block" tabindex="0" data-toggle="tooltip" title="" tooltip)
+                                            button(
+                                                class="btn btn-danger"
+                                                button-delete-cv=jobDetail.maCTCV
+                                                announce = jobDetail.announce
+                                            ) Xóa 
+                else 
+                    .row     
+                        .col-12 
+                            div(style="text-align: center") 
+                                b Không có danh sách để hiển thị    
+    
+    div(class="paginationn" pagination=pagination)  
+
+    form(
+        form-watch-cv 
+        action 
+        path=`/${prefixAdmin}/cv-management/${User.congTyId}/detail`
+    ) 
+
+    form(
+        action="" 
+        method="post"
+        path=`/${prefixAdmin}/cv-management/${User.congTyId}/delete`
+        form-delete-cv
+    ) 
+
+block script 
+    script(src="/admin/js/pagination.js") 

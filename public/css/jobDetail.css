@@ -1,0 +1,320 @@
+/* header  */
+*{
+    box-sizing: border-box;
+}
+
+
+select{
+    outline: none;
+}
+p{
+    margin-bottom: 10px;
+}
+
+:root{
+    --blue-font : #50a5ed;
+    --font-color--hover : #50a5ed;
+    --font-color : #fff;
+
+}
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid var(--blue-font);
+    background-color: #fff;
+    z-index: 100;
+}
+.header .container{
+    padding: 12px 0;
+    max-width: 1400px;
+}
+.header .container .container-logo{
+    font-size: 30px;
+    color: var(--blue-font);
+    font-weight: 700;
+}
+.header .container .container-logo span{
+    font-size: 40px;
+}
+.notice{
+    padding-right: 15px;
+    cursor: pointer;
+}
+.notice img{
+    color: var(--blue-font);
+}
+.info{
+    border: 1px solid --blue-font;
+    border-radius: 15px;
+    padding: 3px 8px;
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
+}
+span.name{
+    cursor: pointer;
+    color: var(--blue-font);
+}
+/* Nội dung  */
+.section-body{
+    margin-top: 100px;
+}
+
+.section-body .kinhnghiem p 
+{
+    display: flex;
+}
+.section-body .luong p 
+{
+    display: flex;
+}
+.section-body .hanchot p 
+{
+    display: flex;
+}
+
+/* .section-body .container-right, .container-left{
+    border: 1px solid black;
+} */
+.section-body .container-left .item-top{
+    padding: 10px 70px;
+    border: 4px solid var(--blue-font);
+}
+.section-body .container-left .item-top .title-cv{
+    font-size: 40px;
+    font-weight: 700;
+}
+.section-body .container-left .item-top .title-cmp{
+    font-size: 25px;
+}
+.section-body .container-left .hanchot .burst-div{
+    width: 10px;
+    height: 10px;
+    background: red;
+    border-radius: 50%;
+    animation-name: burst;
+    animation-duration:0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes burst {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+} 
+
+.section-body .container-left .hanchot p 
+{
+    font-size: 14px;
+}
+
+.section-body .container-left .item-bot{
+    margin-top: 5px;
+    padding: 10px 70px;
+    border: 4px solid var(--blue-font);
+}
+.section-body .container-left .item-bot .item-bot-title .hang{
+    width: 10px;
+    height: 25px;   
+    margin-right: 10px;
+    background-color: var(--blue-font);
+}
+.section-body .container-left .item-bot .item-bot-title .title-chitiet{
+    width: 200px;
+    background: rgb(80,165,237);
+    background: linear-gradient(90deg, rgba(80,165,237,1) 22%, rgba(253,253,253,1) 100%);
+}
+.section-body .container-right .logo-cmp img{
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--blue-font);
+}
+.section-body .container-right .box-top{
+    border: 2px solid var(--blue-font);
+    padding: 20px 60px;
+}
+.section-body .container-right .box-top .name-cmp{
+    font-size: 18px;
+    font-weight: 700;
+}
+.section-body .container-right .box-bot{
+    border: 4px solid var(--blue-font);
+    height: 500px;
+    overflow: scroll;
+}
+.section-body .container-right .box-bot .item{
+    border: 1px solid var(--blue-font);
+}
+.section-body .container-right .box-bot .item img{
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--blue-font);
+}
+.section-body .container-right .box-bot .item .name-job{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 11rem;
+    font-size: 20px;
+    font-weight: 500;
+}
+.section-body .container-right .box-bot .item span{
+    padding: 2px 2px;
+    border: 1px solid var(--blue-font);
+    border-radius: 10px;
+    margin-right: 3px;
+}
+.section-body .container-right .box-bot .item .button-xem .ungtuyen{
+    background-color: var(--blue-font);
+    padding: 3px 7px;
+    color: var(--font-color);
+    font-weight: 600;
+    margin-right: -0.5rem;
+    margin-bottom: -0.5rem;
+    cursor: pointer;
+}
+.section-body .container-right .box-bot .item .button-xem .ungtuyen:hover{
+    background-color: var(--font-color);
+    color: var(--blue-font);
+    border-left: 1px solid var(--blue-font);
+    border-top: 1px solid var(--blue-font);
+}
+
+
+/* form ứng tuyển */
+.box-ungtuyen{
+    position: fixed;
+    z-index: 101;
+    width: 80%;
+    height: 180px;
+    top: 40%;
+    left: 10%;
+    background-color: var(--font-color);
+    display: none;
+}
+.section-body .box-ungtuyen{
+    border: 2px solid var(--blue-font);
+    color: var(--blue-font);
+}
+.section-body .box-ungtuyen .exit{
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.section-body .box-ungtuyen .from-header .title-cv{
+    font-size: 24px;
+    font-weight: 500;
+}
+.section-body .box-ungtuyen .form-body{
+    background-color: var(--blue-font);
+    margin: 20px 0px;
+}
+.section-body .box-ungtuyen .form-body .upload{
+    color: var(--font-color);
+    font-size: 20px;
+}
+.section-body .box-ungtuyen .form-body .upload input{
+    display: none;
+}
+.section-body .box-ungtuyen .form-body select{
+    outline: none;
+    font-size: 20px;
+    border: 2px solid var(--blue-font);
+}
+.section-body .box-ungtuyen .ungtuyen{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--font-color);
+    background-color: var(--blue-font);
+    border: none;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+.overplay{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    display: none;
+}
+
+.section-body .container-right .box-bot .item .button-xem .ungtuyen a{
+    color: var(--font-color);
+    text-decoration: none;
+}
+
+.section-body .container-right .box-bot .item .button-xem .ungtuyen a:hover{
+    color: var(--blue-font);
+}
+
+/* footer */
+.footer{
+    background-color: var(--blue-font);
+}
+.footer .box-item{
+    padding: 15px;
+}
+.footer .box-item .footer-logo , .footer-info,.footer-slogan{
+    color: var(--font-color);
+}
+.footer .box-item .footer-slogan{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+.footer .box-item .footer-logo{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* responsive */
+
+@media screen and (max-width: 768px) {
+    .section-body .container-left .item-top .title-cv{
+        font-size: 24px;
+    }
+    .section-body .container-left .item-top .title-cmp {
+        font-size: 18px;
+    }
+    .section-body .container-left .item-info{
+        font-size: 10px;
+    }
+    .section-body .container-left .hanchot p {
+        font-size: 10px;
+    }
+    .footer .box-item .footer-logo ,.footer-info{
+        font-size: 10px;
+    }
+    .footer .footer-slogan{
+        display: none;
+    }
+    .header .container .container-logo, .span-name {
+        font-size: 24px;
+    }
+    .header .container .container-logo span {
+        font-size: 30px;
+    }
+    img, svg ,  .notice img {
+        width: 28px;
+    }
+    .section-body .container-right .box-bot .item .name-job {
+        font-size: 17px;
+    }
+    .section-body .container-right .box-bot .item span {
+        font-size: 13px;
+    }
+}
+
+
+[loginBeforApply]{
+    display: none;
+}

@@ -1,0 +1,57 @@
+extends ../../layouts/default.pug 
+include ../../mixins/box-head.pug 
+include ../../mixins/time-apply.pug
+include ../../mixins/filterStatus.pug
+include ../../mixins/sort.pug
+
+block main 
+
+    .container-fluid 
+        +box-head(title)
+
+        .card.mb-1(filter-sort) 
+            .card-header Bộ lọc và sắp xếp công việc
+            .card-body 
+                .row 
+                    .col-8(style="display: flex")
+                        +filterStatus(filterStatus)
+                    .col-4
+                        +sort(sortObj)
+
+    .section-list.container-fluid
+        .section-item.row.row-cols-1.row-cols-md-2.row-cols-lg-4.p-4(job-list)
+            if(jobs.length > 0)
+                for job in jobs 
+                    .item.col-sm-12.col-md-6.col-lg-4.col-xl-3.mb-4.p-2
+                        .box.p-4
+                            .item-top.d-flex.mb-2
+                                .item-img
+                                    img(src=job.company.logo, alt="logo công ty")
+                                .ttle-job 
+                                    .name-job #{job.tenCV}
+                                    //- Điền vào tên
+                                    .name-comp #{job.company.tenCT}
+                                    //- Điền tên công ty 
+                            .item-bot
+                                .info-job 
+                                    span.desr #{job.luong} triệu
+                                    span.desr 
+                                        +time-apply(job.soNgayTuNgayKhoiTao, job.soNgayHieuLuc)
+                                .button-ut.d-flex.justify-content-between
+                                    .empty 
+                                    div(class="ungTuyenAnimation ungtuyen animate__pulse" 
+                                        applied=job.applied 
+                                        dateAndStatus=job.dateAndStatus 
+                                        path=`/jobs/detail/${job.slug}`
+                                    ) Ứng tuyển 
+                                .button.xem 
+                                    a(href=`/jobs/detail/${job.slug}`) Xem >>
+            else 
+                .col-12
+                    div(class="text-center alert alert-danger" ) Không tìm thấy công việc 
+
+        div(class="paginationn" pagination=pagination)  
+            
+
+block script
+    script(src="/js/pagination.js")         

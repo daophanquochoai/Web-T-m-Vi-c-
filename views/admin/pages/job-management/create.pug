@@ -1,0 +1,109 @@
+extends ../../layouts/default.pug 
+include ../../mixins/moment.pug
+include ../../mixins/alert.pug
+
+block main
+    .container
+        +alert-error(5000)
+
+        h2 Tạo mới công việc
+
+        div(class="box")
+            div(class="box-body")
+                form(
+                    action=`/${prefixAdmin}/job-management/${congTyId}/create`
+                    method="post"
+                    form-create-job
+                ) 
+                    div(class="form-group")
+                        label(for="tenCV") Tên công việc
+                        input(
+                            type="text"
+                            class="form-control"
+                            id="tenCV"
+                            name="tenCV"
+                            required
+                        )
+                    div(class="form-group")
+                        label(for="moTa") Mô tả công việc
+                        input(
+                            type="text"
+                            class="form-control"
+                            id="moTa"
+                            name="moTa"
+                        )
+                    div(class="form-group")
+                        label(for="jobdetail") Chi tiết công việc
+                        textarea(
+                            class="form-control"
+                            id="jobdetail"
+                            name="chiTietCV"
+                            rows="5"
+                            textarea-mce
+                        )
+                    div.row
+                        div(class="form-group col-5" class="tags" tags=specialities)
+                            input(type="text" name="tagsName" class="d-none")
+                            .wrapper
+                                .title
+                                    <i class="fa-solid fa-tags"></i>
+                                    p Lĩnh vực 
+                                .content
+                                    p Nhấn enter để thêm tag mới
+                                    ul 
+                                        input(type="text")
+                                    .select
+                                        ul 
+                                            //- <li>html</li>
+                                .details
+                                    p Còn <span>_</span> tags có thể thêm vào
+                        div(class="form-group col-4" class="areas")
+                            input(type="text" name="idsArea" class="d-none")
+                            .wrapper
+                                .select-btn 
+                                    span.btn-text ---Khu vực---
+                                    <i class="fa-solid fa-angle-down"></i>
+                                .content(areas=areas)
+                                    .search     
+                                        <i class="fa-solid fa-search"></i>
+                                        input(type="text" placeholder="Search")
+                                    ul(class="options")
+                                        li TP Hồ Chí Minh 
+                                        li Hà Nội   
+                                        li Đà Nẵng
+                        div(class="div col-3")
+                            div(class="form-group")
+                                    label(for="luong") Lương
+                                    input(
+                                        type="number"
+                                        class="form-control"
+                                        id="luong"
+                                        name="luong"
+                                        min="1"
+                                        required
+                                )
+                            div(class="form-group")
+                                label(for="kinhNghiem") Kinh nghiệm
+                                select(id="kinhNghiem" class="form-control" name="kinhNghiem")
+                                    each kn in objKinhNghiem
+                                        option(value=kn.value) #{kn.name}
+                            div(class="form-group")
+                                label(for="hanChot") Hạn chót
+                                input(
+                                    type="date"
+                                    class="form-control"
+                                    id="hanChot"
+                                    name="hanChot"
+                                    required
+                                )
+                        
+                        
+                    div(class="form-group col-12 mt-2")
+                        button(
+                            type="submit"
+                            class="btn btn-primary"
+                            style="width:20%"
+                        ) Tạo mới
+
+block script 
+    script(src="/admin/js/job-create.js") 

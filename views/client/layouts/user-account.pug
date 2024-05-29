@@ -1,0 +1,53 @@
+doctype html 
+html 
+    head 
+        link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous")
+        link( rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css")
+        link(href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet')
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.min.css")
+        link(rel="stylesheet", href="/css/chiTietUser.css")
+        title #{title}
+
+    body 
+        //- header
+        .section-CT-header 
+            .header-bg 
+            .header-infoCT
+                .box-title.d-flex.justify-content-between.align-items-center
+                    form(
+                        action=`/my-account/edit/avatar-user/${User.userId}` 
+                        method="post" 
+                        form-user-update-avatar 
+                        enctype="multipart/form-data"
+                    ) 
+                        .item-img(image-preview-avatar-user)
+                            img(
+                                src=User.avatar || "https://inkythuatso.com/uploads/thumbnails/800/2023/03/8-anh-dai-dien-trang-inkythuatso-03-15-26-54.jpg", 
+                                alt="Ảnh đại diện"
+                                image-preview-see
+                            )
+                        
+                            input(
+                                type="file"
+                                class="form-control-file d-none"
+                                name="avatar"
+                                accept="image/*"
+                                image-preview-input
+                            )
+
+                            div(class="icon-change-img-user") 
+                                <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                        
+                    .title-CT #{User.hoVaTen}
+            .negative.d-flex.justify-content-center.align-items-center 
+                a(href="/") 
+                    <box-icon type='solid' name='left-arrow-alt'></box-icon>  
+
+            
+
+        block main 
+
+        script(src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js")
+        script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.all.min.js") 
+        script(src="/js/chiTietUser.js")

@@ -1,0 +1,52 @@
+extends ../../layouts/default.pug 
+include ../../mixins/moment.pug
+include ../../mixins/alert.pug
+include ../../mixins/modal.pug 
+
+block main
+    +alert-success(4000)
+    +alert-error(4000)
+
+    h2 Chi tiết CV
+
+    .card.my-3 
+        .card-header 
+            p <b>Ứng viên: #{jobDetail.infoUser.hoTen}</b>
+        .card-body 
+            p Ngày gửi: 
+                b 
+                    +formatDateTime(jobDetail.thoiGianNop)
+            p Số điện thoại: <b>#{jobDetail.infoUser.sdt}</b>
+            p Email: <b>#{jobDetail.infoUser.email}</b>
+            p Thành phố ứng tuyển: <b>#{jobDetail.infoArea.tenKV}</b>
+            p Link: 
+                a(href=jobDetail.pdf target="_blank") Đơn ứng tuyển của #{jobDetail.infoUser.hoTen}
+    
+    .card.my-3 
+        .card-header Chấp nhận / Từ chối 
+        .card-body 
+
+            button(
+                class="btn btn-success me-2"
+                modal_id="modalAccept"
+                button-action
+            ) Chấp nhận
+
+            +modal(jobDetail, "modalAccept", "Chấp nhận", "accept")
+                            
+            button(
+                class="btn btn-warning"  
+                modal_id="modalReject"
+                button-action
+            ) Từ chối
+
+            +modal(jobDetail, "modalReject", "Từ chối", "reject")
+
+            div(class="thongBao" thongBao=announce)
+        
+
+    .card.my-3 
+        .card-header 
+            p <b>Thông tin công việc: #{jobDetail.infoJob.tenCV}</b>
+        .card-body 
+            | !{jobDetail.infoJob.chiTietCV}     

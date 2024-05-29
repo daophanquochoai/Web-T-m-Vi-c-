@@ -1,0 +1,120 @@
+*{
+    box-sizing: border-box;
+}
+select{
+    outline: none;
+}
+p{
+    margin-bottom: 10px;
+}
+
+:root{
+    --blue-font : #50a5ed;
+    --font-color--hover : #50a5ed;
+    --font-color : #fff;
+
+}
+.header{
+    position: fixed;
+    width: 100%;
+    border-bottom: 1px solid var(--blue-font);
+    background-color: #fff;
+    z-index: 100;
+}
+
+/* section-link (cong viec va cong ty) */
+
+/* .section-link .container .link{
+    margin: 100px 50px 10px 50px;
+    font-size: 20px;
+    color: var(--blue-font);
+    padding: 0 10px;
+    cursor: pointer;
+} */
+/* .section-link .container .link-cmp{
+    border-bottom: 2px solid var(--font-color--hover);
+} */
+
+/* Section tim kiem */
+
+.tenCT input{
+    outline: none;
+}
+.container .navbar-contai{
+    font-size: 16px;
+    display: inline-block;
+    font-family: Arial, Tahoma, 'Times New Roman', sans-serif;
+    .tenCongTy{
+        border-radius: 10px;
+        width: 100%;
+        border: 1px solid var(--blue-font);
+        display: flex;
+        .tenCT{
+            border-right: 1px solid var(--blue-font); /* Đường viền trái, kích thước 2px, màu đen (#000) */
+            padding-left: 10px;
+            width: 70%;
+        }
+    }
+    display: flex;
+    margin: 40px;
+    justify-content: space-between;
+
+}
+.container .navbar-contai .tenCongTy .tenCT input{
+    height: 50px;
+    border: none;
+    width: 80%;
+}
+#khuvuc{
+    border-radius: 10px;
+    border: none;
+}
+/* .container .navbar-contai .tim{
+    width: 200px;
+    height: 50px;
+} */
+.tim button{
+    background-color: var(--blue-font);
+    color: var(--font-color);
+    border: none; 
+    width: 200px;
+    height: 50px; 
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+/* Section list job  */
+.section-list .section-item .item{
+    padding: 0 100px;
+}
+.section-list .section-item .box{
+    border: 2px solid black;
+    padding: 10px 40px;
+    justify-content: space-between;
+    height: 120px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.section-list .section-item .box .item-left .item-img img{
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+.section-list .section-item .box .item-left .ttle-job .name-job{
+    font-size: 24px;
+    color: var(--font-color--hover);
+}
+.section-list .section-item .box .item-right{
+    width: 30%;
+    height: 100px;
+    overflow: hidden;
+}
+.section-list .section-item .box .item-right .desr-title{
+    color: var(--font-color--hover);
+}
+
+/* animation hover */
+
+.section-list .section-item .box:hover{
+    border-color: var(--font-color--hover);
+}

@@ -1,0 +1,27 @@
+extends ../../layouts/default.pug 
+
+block main 
+    h2 Trang thông tin công ty
+
+    .card.my-3(info-company)
+        .card-header 
+            p <b>Công ty: #{company.tenCT}</b>
+        .card-body 
+            .body-image 
+                img(src=company.logo, alt=company.tenCT)
+            .body-content 
+                p Địa chỉ: <b>#{company.diaDiem}</b>
+                p Số điện thoại: <b>#{company.sdtCT}</b>
+                p Email: <b>#{company.emailCT}</b>
+                p Quy mô: <b>#{company.quyMo} người</b>
+
+    .card.my-3 
+        .card-header 
+            p <b>Mô tả công ty</b>
+        .card-body 
+            | !{company.moTa}         
+
+    a(
+        href=`/${prefixAdmin}/infoCompany/${company.congTyId}/edit`
+        class="btn btn-primary"
+    ) Chỉnh sửa thông tin 

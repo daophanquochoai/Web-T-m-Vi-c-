@@ -1,0 +1,62 @@
+doctype html 
+header
+    link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous")
+    link( rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css")
+    link(href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet')
+    link(rel="stylesheet", href="/css/chitietCT.css")
+    title Trang công ty
+    include ../../mixins/time-apply.pug
+body 
+    .section-CT-header 
+        .header-bg 
+        .header-infoCT
+            .box-title.d-flex.justify-content-between.align-items-center
+                .item-img 
+                    img(src=company.logo, alt="logo công ty")
+                .title-CT #{company.tenCT}  
+        .negative.d-flex.justify-content-center.align-items-center <box-icon type='solid' name='left-arrow-alt'></box-icon>  
+    .section-CT-body.container            
+        .navbar-Ct.d-flex 
+            .item-trangchu.active.box Trang chủ 
+            .item-tintuyen.box Tin tuyển dụng 
+        .body-trangchu 
+            .container-item 
+                .item 
+                    p.title Mô tả :
+                    div(mota) 
+                        | !{company.moTa}
+                    
+                .item 
+                    p.title Quy mô :
+                    p.text #{company.quyMo} nhân viên 
+                .item 
+                    p.title Liên hệ :
+                    p.text.d-flex.align-items-center <box-icon name='phone-call' ></box-icon> : #{inforAdmin.sdt} <br> <box-icon name='envelope' ></box-icon> : #{inforAdmin.email}
+                .item 
+                    p.title Địa chỉ :
+                    p.text #{company.diaDiem}
+        .body-tintuyen 
+            .box-item 
+                each job in jobOfCompany
+                    .item.mb-2
+                        .item-top.d-flex
+                            .item-img
+                                img(src=company.logo, alt="logo công ty")
+                            .ttle-job.ms-4
+                                .name-job #{job.tenCV}
+                                //- Điền vào tên
+                                .name-comp #{company.tenCT}
+                                //- Điền tên công ty 
+                        .item-bot
+                            .info-job 
+                                span.desr #{job.luong} Triệu
+                                span.desr 
+                                    +time-apply(job.soNgayTuNgayKhoiTao, job.soNgayHieuLuc)
+                            .button-xem.d-flex.justify-content-between
+                                .empty 
+                                .ungtuyen.animate__pulse 
+                                    a(href=`/jobs/detail/${job.slug}`) Xem >>
+         
+             
+    script(src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js")
+    script(src="/js/chitietCT.js")
